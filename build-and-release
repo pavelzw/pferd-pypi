@@ -1,0 +1,14 @@
+#!/bin/bash
+
+version="${1?Error: \$version not set.}"
+
+rm -rf PFERD
+git clone --depth 1 -c advice.detachedHead=false --branch $version https://github.com/Garmelon/PFERD.git -q
+cd PFERD
+
+echo "Applying pyproject.patch"
+git apply ../pyproject.patch
+
+python -m build
+# twine upload --repository testpypi dist/*
+twine upload --repository pypi dist/*
