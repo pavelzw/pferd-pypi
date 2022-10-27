@@ -1,8 +1,8 @@
 diff --git a/pyproject.toml b/pyproject.toml
-index 9787c3b..963a04d 100644
+index 9787c3b..11481f4 100644
 --- a/pyproject.toml
 +++ b/pyproject.toml
-@@ -1,3 +1,29 @@
+@@ -1,3 +1,32 @@
 +[project]
 +name = "pferd"
 +dynamic = ["version"]
@@ -28,6 +28,9 @@ index 9787c3b..963a04d 100644
 +"Homepage" = "https://github.com/Garmelon/PFERD"
 +"Bug Tracker" = "https://github.com/Garmelon/PFERD/issues"
 +"Source" = "https://github.com/Garmelon/PFERD"
++
++[project.scripts]
++pferd = "PFERD.__main__:main"
 +
  [build-system]
  requires = ["setuptools", "wheel"]
