@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -e
 version="${1?Error: \$version not set.}"
 
 rm -rf PFERD
@@ -10,5 +10,5 @@ echo "Applying pyproject.patch"
 git apply ../pyproject.patch
 
 python -m build
-# twine upload --repository testpypi dist/*
-twine upload --repository pypi dist/*
+twine upload --repository testpypi dist/*
+# twine upload --repository pypi dist/*

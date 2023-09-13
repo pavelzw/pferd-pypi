@@ -1,0 +1,14 @@
+[project]
+name = "pferd-pypi"
+version = "0.1.0"
+description = "Add a short description here"
+authors = []
+channels = ["conda-forge"]
+platforms = ["osx-arm64"]
+
+[tasks]
+bump = "./build-and-release v3.5.0"
+
+[dependencies]
+"build" = "*"
+"twine" = "*"
