@@ -7,8 +7,8 @@ channels = ["conda-forge"]
 platforms = ["osx-arm64"]
 
 [tasks]
-bump = "./build-and-release v3.5.0"
+bump = "./build-and-release v3.7.0"
 
 [dependencies]
-"build" = "*"
+"python-build" = "*"
 "twine" = "*"

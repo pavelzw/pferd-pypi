@@ -1,0 +1,12 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index bc67e1c..b8e6424 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -4,6 +4,7 @@ build-backend = "setuptools.build_meta"
+ 
+ [project]
+ name = "PFERD"
++readme = "README.md"
+ dependencies = [
+   "aiohttp>=3.8.1",
+   "beautifulsoup4>=4.10.0",
