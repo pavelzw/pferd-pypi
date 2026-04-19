@@ -14,6 +14,7 @@ permissions:
 
 jobs:
   build:
+    environment: pypi
     runs-on: ubuntu-latest
     outputs:
       version-changed: ${{ steps.version-metadata.outputs.changed }}
@@ -29,5 +30,5 @@ jobs:
           name: artifact
           path: dist/*
       - name: Publish package on PyPi
-        if: github.event_type == 'workflow_dispatch'
+        if: github.event_type == 'workflow_dispatch' && inputs.upload == 'true'
         uses: pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b # v1.14.0
