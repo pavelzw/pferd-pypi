@@ -1,0 +1,33 @@
+name: Build
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      upload:
+        type: boolean
+        required: true
+        description: "Upload to PyPi"
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      version-changed: ${{ steps.version-metadata.outputs.changed }}
+      new-version: ${{ steps.version-metadata.outputs.newVersion }}
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+      - uses: prefix-dev/setup-pixi@1b2de7f3351f171c8b4dfeb558c639cb58ed4ec0 # v0.9.5
+      - name: Build
+        run: pixi run build
+      - name: Upload package
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: artifact
+          path: dist/*
+      - name: Publish package on PyPi
+        if: github.event_type == 'workflow_dispatch'
+        uses: pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b # v1.14.0

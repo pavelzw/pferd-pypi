@@ -1,13 +1,11 @@
-[project]
+[workspace]
 name = "pferd-pypi"
-version = "0.1.0"
-description = "Add a short description here"
-authors = []
 channels = ["conda-forge"]
-platforms = ["osx-arm64"]
+exclude-newer = "7d"
+platforms = ["osx-arm64", "linux-64"]
 
 [tasks]
-bump = "./build v3.8.3"
+build = "./build v3.9.0"
 
 [dependencies]
 "python-build" = "*"
