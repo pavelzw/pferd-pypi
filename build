@@ -2,7 +2,7 @@
 set -e
 version="${1?Error: \$version not set.}"
 
-rm -rf PFERD
+rm -rf PFERD dist
 git clone --depth 1 -c advice.detachedHead=false --branch $version https://github.com/Garmelon/PFERD.git -q
 cd PFERD
 
@@ -10,3 +10,5 @@ git apply ../readme.patch
 
 python -m build
 twine check dist/*
+
+mv dist ../dist
